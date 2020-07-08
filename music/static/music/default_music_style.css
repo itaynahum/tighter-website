@@ -1,0 +1,74 @@
+.box {
+    background: ghostwhite;
+    width: 250px;
+    height: 365px;
+    text-align: center;
+    horiz-align: center;
+    float: left;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+/* the title in the index*/
+
+img.center {
+    border-radius: 7px;
+}
+
+h2.title {
+  font-family: "Segoe UI Light", sans-serif;
+  font-size:32px;
+  line-height: 10px;
+  text-align: left;
+  padding: 25px 20px 5px 0;
+}
+
+h3.artist {
+  font-family: "Segoe UI Light", sans-serif;
+  font-size:20px;
+  line-height: 10px;
+  text-align: left;
+  padding: 5px 0;
+}
+
+input.view_details {
+  background: steelblue;
+  float: left;
+  padding: 6px 15px;
+  border-radius: 7px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+button.trash {
+    border: 1px black;
+    background: white;
+    float: left;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+button.thumbs-up {
+    border: 1px gainsboro;
+    background: white;
+    float: left;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+button.thumbs-down{
+    border: 1px gainsboro;
+    background: white;
+    float: left;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+div.verticalLine {
+      width: 2px; /* Use only border style */
+      height: 100%;
+      float: left;
+      border: 2px inset; /* This is default border style for <hr> tag */
+}

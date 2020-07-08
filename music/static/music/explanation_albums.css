@@ -1,0 +1,8 @@
+div.explanation{
+    background: grey;
+    width: 250px;
+    height: 365px;
+    float: right;
+    padding-left: 15px;
+    border-radius: 7px;
+}

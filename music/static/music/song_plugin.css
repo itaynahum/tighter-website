@@ -1,0 +1,19 @@
+div.box {
+    width: 305px;
+    height: 400px;
+    text-align: center;
+    horiz-align: center;
+    float: left;
+    padding: 5px;
+    border-radius: 7px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+}
+
+
+h2.title{
+    font-family: "MS UI Gothic", sans-serif;
+    text-align: center;
+    color: lightgray;
+}
+
