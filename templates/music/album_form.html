@@ -1,0 +1,64 @@
+{% extends 'music/base.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static "music/explanation_albums.css" %}">
+{% block title %}Add a new Album{% endblock %}
+{% block albums_active %}active{% endblock %}
+<!--using bootstrap!!!-->
+{% block body %}
+
+<div class="container-fluid" style="float: right">
+    <div class="col-sm-12 col-md-7" style="width: 600px;">
+        <div class="panel panel-default" style="height: 500px;background: lightgrey">
+            <br>
+            <h1 style="font-family: 'Segoe UI Historic', sans-serif;margin: 5px;">
+                What is Tighter?
+            </h1>
+            <h4 style="font-family: 'Segoe UI Historic', sans-serif;margin: 5px;">
+                Tighter is an app that allows you to upload
+                and store all of your music on the cloud
+            </h4>
+            <br>
+            <h2 style="font-family: 'Segoe UI Historic', sans-serif;margin: 5px;">
+                How do i add music?
+            </h2>
+
+            <h4 style="font-family: 'Segoe UI Historic', sans-serif;margin: 5px;">
+                First, create a new album by filling out the form on this page. Once an album is created
+                album is created you will be able to add/upload songs.
+            </h4>
+            <br>
+            <h2 style="font-family: 'Segoe UI Historic', sans-serif;margin: 5px;">
+                What are some Album logo best practices?
+            </h2>
+            <br>
+            <ul style="font-family: 'Segoe UI Historic', sans-serif;margin: 5px;">
+                <li>Have a resolusion of 512x512</li>
+                <li>Use common image formats such as JPEG, PNG or GIF</li>
+                <li>Remain under the 2MB limit</li>
+                <li>Square images look best</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'music/form-template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

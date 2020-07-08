@@ -1,0 +1,57 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+<!--the data below is what were gonna want to appear in the block section in bae html file-->
+{% extends 'music/base.html' %}
+
+{% load static %}
+
+{% block title %}Tighter{% endblock %}
+<!-- all were doing is telling him to replace this data (below) with the block we declared in the base file-->
+{% block body %}
+
+    <link rel="stylesheet" type="text/css" href="{% static "music/default_music_style.css" %}">
+
+    <ul>
+        {%  for album in all_albums %}
+            <div class="box" style="margin-right: 20px;margin-bottom: 15px">
+                <img src="{{ album.album_logo.url }}" width="235" height="210" alt="Album Logo" class="center">
+                <h2 class="title">{{ album.album_title }}</h2>
+                <h3 class="artist">{{ album.artist }}</h3>
+
+                <form action="{% url "music:detail" album.id %}">
+                    <input type="submit" class="view_details" value="View Details"/>
+                </form>
+
+                <!--inorder for me to create a post form i need to make sure putting - csrf_token adn submit on botton.-->
+                <form action="{% url "music:album-delete" album.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="trash" style="margin:5px;color: red" type="submit">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </button>
+                </form>
+
+
+                <form action="{% url 'music:favorite' album.id %}" method="post">
+                    {% csrf_token %}
+
+                    {% if album.is_favorite %}
+                        <button class="thumbs-up" style="margin:5px" type="submit">
+                            <span class="glyphicon glyphicon-thumbs-up" style="color: dodgerblue" aria-hidden="true"></span>
+                        </button>
+                    {% else %}
+
+                        <button class="thumbs-down" style="margin:5px" type="submit">
+                            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                        </button>
+                    {% endif %}
+
+                </form>
+                <!--our relations to the songs values-->
+
+                <!--<a href="{% url "music:detail" album.id  %}">{{ album.album_title }}</a>-->
+            </div>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

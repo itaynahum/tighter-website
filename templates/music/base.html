@@ -1,0 +1,88 @@
+<!-- the basic stracture for every page were on-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Tighter{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.google.com/specimen/DM+Mono?sidebar.open&selection.family=DM+Mono:ital,wght@1,500"
+          rel="stylesheet" type="text/css">
+    <!-- we always need to put our line of code(the importation-the one below) after
+     the bootstrap importation line for it to not over ride ours-->
+    <link rel="stylesheet" type="text/css" href="{% static "music/style.css" %}">
+
+    <!-- needed to download the library inorder for it to work-->
+
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<!-- creating navigation bar - <nav means to create a new part with data, like navigation bar an so on... -->
+<body>
+    <nav class="navbar navbar-inverse" style="border-radius: 1px"> <!-- inverse -changes the color of navbar to black-->
+     <div class="container-fluid">
+
+       <!-- Header -->
+         <div class="navbar-header">
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+             </button>
+             <a class="navbar-brand" href="{% url 'music:index' %}">Tighter</a>
+         </div>
+
+         <!-- Items -->
+         <div class="collapse navbar-collapse" id="topNavBar">
+             <ul class="nav navbar-nav">
+                <li class="">
+                    <a href="{% url 'music:index' %}">
+                        <span class="glyphicon glyphicon-cd" aria-hidden="true"></span>&nbsp; Albums
+                    </a>
+                </li>
+
+                 <li class="">
+                    <a href="{% url 'music:songs' %}">
+                        <span class="glyphicon glyphicon-music" aria-hidden="true"></span>&nbsp; Songs
+                    </a>
+                </li>
+             </ul>
+
+             <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'music:index' %}">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="q" value="{{ request.GET.q }}">
+                </div>
+                <button type="submit" class="btn btn-default">
+                    Search
+                </button>
+            </form>
+             <!-- ul means to open a list of items-->
+             <ul class="nav navbar-nav navbar-right">
+                 <!-- li means to create an item-->
+                 <!-- <a> means to put data inside that item-->
+                <li>
+                    <a href="{%  url 'music:album-add' %}">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Album
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'music:logout' %}">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Logout
+                    </a>
+                </li>
+
+             </ul>
+         </div>
+     </div>
+</nav>
+<!-- inorder fro us to inclue data from the webpage itself and not only from the nav bar we need to create a block.
+we need to include a block of code-->
+{% block body  %}
+{% endblock %}
+</body>
+</html>

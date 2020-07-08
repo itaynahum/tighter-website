@@ -1,0 +1,57 @@
+<!--make this template!!!-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+<!--the data below is what were gonna want to appear in the block section in bae html file-->
+
+{% extends 'music/base.html' %}
+{% load static %}
+{% block title %}Songs{% endblock %}
+
+{% block body %}
+
+    <link rel="stylesheet" type="text/css" href="{% static "music/song_plugin.css" %}">
+    <div class="container-fluid" style="float: right;">
+        <div class="col-sm-12 col-md-7" style="width: 600px;">
+            <div class="panel panel-default" style="height: 280px;background: lightgrey">
+                <br>
+                <h2 style="font-family: 'Segoe UI Historic', sans-serif;margin: 5px;">
+                    How do i add songs?
+                </h2>
+
+                <h4 style="font-family: 'Segoe UI Historic', sans-serif;margin: 5px;">
+                    After creating an album, head to Add new song button and add songs related to albums
+                </h4>
+                <br>
+                <h2 style="font-family: 'Segoe UI Historic', sans-serif;margin: 5px;">
+                    What are some Song Audio file best practices?
+                </h2>
+                <br>
+                <ul style="font-family: 'Segoe UI Historic', sans-serif;margin: 5px;">
+                    <li>Use common audio file formats such as mp3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul>
+        {%  for song in all_songs %}
+            <div class="box" {% if song.is_favorite %}
+
+                style="background: lightyellow"
+                {% else %}
+                style="background: ghostwhite"
+                {% endif %}>
+
+                <img src="{{ song.album.album_logo.url }}" width="250px" height="250px" style="border-radius: 8px" alt="Album Logo">
+                <h2 class="title">{{ song.song_title }}</h2>
+                <!--inorder for me to create a post form i need to make sure putting - csrf_token adn submit on botton.-->
+                <var class="navbar original" style="margin-left: 40px">
+                    <audio controls class="play_bar">
+                        <source src="{{ song.audio_file.url }}" type="audio/mp3">
+                    </audio>
+                </var>
+
+            </div>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
